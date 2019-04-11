@@ -95,12 +95,12 @@ const ArtistStack = createStackNavigator({
     screen: Details
   }
 })
-const FeedStack = createStackNavigator({
-  Feed: {
-    screen: Feed,
+const Artists = createStackNavigator({
+  Artists: {
+    screen: ArtistScreen,
     navigationOptions: ({navigation}) => {
       return {
-        headerTitle: 'Feed',
+        headerTitle: 'List Of Artists',
         headerLeft: (
           <Icon 
         style={{paddingLeft: 10}}
@@ -138,7 +138,7 @@ const ProfileStack = createStackNavigator({
 })
 
 const SettingStack = createStackNavigator({
-  Feed: {
+  Artists: {
     screen: Settings,
     navigationOptions: ({navigation}) => {
       return {
@@ -157,7 +157,7 @@ const SettingStack = createStackNavigator({
 
 const HomeTabNavigator = createBottomTabNavigator(
   {
-  FeedStack,
+  Artists,
   ProfileStack,
   SettingStack
   },
