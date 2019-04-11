@@ -168,6 +168,15 @@ const HomeTabNavigator = createBottomTabNavigator(
         header: null,
         headerTitle: routeName
       }
+    },
+    tabBarOptions: {
+      activeTintColor: '#e91e63',
+      labelStyle: {
+        fontSize: 12,
+      },
+      style: {
+        backgroundColor: '#eee',
+      },
     }
   })
 
@@ -184,8 +193,11 @@ const DashboardStackNavigator = createStackNavigator(
         name="md-menu" size={30} />
       }
     }
-  }
+  },
+  
   )
+
+  
 
 
 const AppDrawerNavigator = createDrawerNavigator({
@@ -202,7 +214,7 @@ const AppDrawerNavigator = createDrawerNavigator({
     screen: EventStack
   },
   Account : {
-    screen: Settings
+    screen: Login
   }
 })
 
