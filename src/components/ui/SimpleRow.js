@@ -1,17 +1,34 @@
 import React from 'react';
-import { TouchableOpacity, StyleSheet, Text, View } from 'react-native';
+import { TouchableOpacity, StyleSheet, Text, Image, View } from 'react-native';
 import PropTypes from 'prop-types';
 
 const styles = StyleSheet.create({
-  row: { padding: 20 },
+  row: { 
+    padding: 10,
+    width: '100%',
+    alignContent: 'space-between'
+   },
+  ImageIconStyle: {
+    padding: 20,
+    margin: 10,
+    height: 250,
+    width: 300,
+    resizeMode: 'stretch',
+  }
 });
 
 const SimpleRow = props => (
   <TouchableOpacity
     style={styles.row}
     onPress={()=> alert("Future Development")}>
-    <Text>{props.location.city + ' ' }{props.location.street}</Text>
-    <Text>{props.location.street}</Text>
+    <Image
+     source={{uri: 'https://via.placeholder.com/300'}}
+     style={styles.ImageIconStyle}
+    />
+    <View>
+      <Text>{props.location.city + ' ' }{props.location.street}</Text>
+      <Text>{props.location.street}</Text>
+    </View>
   </TouchableOpacity>
 );
 

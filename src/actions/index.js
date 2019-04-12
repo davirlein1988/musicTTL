@@ -1,4 +1,3 @@
-/*global fetch:false*/
 export const emailChanged = (email) => {
   return {
     type: 'EMAIL_CHANGED',
@@ -18,7 +17,8 @@ export const loginUser = ({ email, password }) => {
     dispatch({
       type: 'LOAD_SPINNER'
     });
-    fetch('https://musicttlmd-staging.herokuapp.com/api/v1/auth/sign_in', {
+   fetch('https://musicttlmd-staging.herokuapp.com/api/v1/auth/sign_in', {
+   // fetch('http://10.0.2.2:3000/api/v1/auth/sign_in', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -40,10 +40,14 @@ export const loginUser = ({ email, password }) => {
         } else {
           console.log('SUCCESS!!');
           response.json().then(data => {
+            //let parsed = JSON.parse(data);
             console.log(data);
+
             dispatch({
               type: 'LOGIN_USER_SUCCESS',
-              payload: data
+              payload: {data: data, response: response}
+              // history.push("/Home")
+
             });
           });
         }

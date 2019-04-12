@@ -95,12 +95,12 @@ const ArtistStack = createStackNavigator({
     screen: Details
   }
 })
-const FeedStack = createStackNavigator({
-  Feed: {
-    screen: Feed,
+const Artists = createStackNavigator({
+  Artists: {
+    screen: ArtistScreen,
     navigationOptions: ({navigation}) => {
       return {
-        headerTitle: 'Feed',
+        headerTitle: 'List Of Artists',
         headerLeft: (
           <Icon 
         style={{paddingLeft: 10}}
@@ -138,7 +138,7 @@ const ProfileStack = createStackNavigator({
 })
 
 const SettingStack = createStackNavigator({
-  Feed: {
+  Artists: {
     screen: Settings,
     navigationOptions: ({navigation}) => {
       return {
@@ -157,7 +157,7 @@ const SettingStack = createStackNavigator({
 
 const HomeTabNavigator = createBottomTabNavigator(
   {
-  FeedStack,
+  Artists,
   ProfileStack,
   SettingStack
   },
@@ -168,6 +168,15 @@ const HomeTabNavigator = createBottomTabNavigator(
         header: null,
         headerTitle: routeName
       }
+    },
+    tabBarOptions: {
+      activeTintColor: '#e91e63',
+      labelStyle: {
+        fontSize: 12,
+      },
+      style: {
+        backgroundColor: '#eee',
+      },
     }
   })
 
@@ -184,8 +193,11 @@ const DashboardStackNavigator = createStackNavigator(
         name="md-menu" size={30} />
       }
     }
-  }
+  },
+  
   )
+
+  
 
 
 const AppDrawerNavigator = createDrawerNavigator({
@@ -202,7 +214,7 @@ const AppDrawerNavigator = createDrawerNavigator({
     screen: EventStack
   },
   Account : {
-    screen: Settings
+    screen: Login
   }
 })
 

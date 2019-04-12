@@ -81,7 +81,7 @@ class VenueList extends Component {
             <View style={{ flex: 1 }}>
                 {this.renderHeader()}
                 {this.renderSeparator()}
-                <ScrollView>
+                <ScrollView >
                     {this.state.venues.map(venue => <SimpleRow {...venue} /> )}
                 </ScrollView>
             </View>
