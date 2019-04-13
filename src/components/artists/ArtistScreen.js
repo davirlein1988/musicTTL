@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, FlatList, ActivityIndicator, ScrollView } from 'react-native';
 import { ListItem, SearchBar } from 'react-native-elements';
-import SimpleRow from '../ui/SimpleRow';
+import SimpleCard from '../ui/SimpleCard';
 import { fetchArtists } from '../../services/artistService';
 
 
@@ -9,7 +9,7 @@ import { fetchArtists } from '../../services/artistService';
 class ArtistScreen extends Component {
     constructor(props){
         super(props)
-        this.state = { 
+        this.state = {
             loading: true,
             artists: []
          }
@@ -26,16 +26,13 @@ class ArtistScreen extends Component {
             loading: false
         })
     }
-    
+
 
     renderSeparator = () => {
         return (
             <View
             style={{
-            height: 1,
-            width: '86%',
-            backgroundColor: '#CED0CE',
-            marginLeft: '14%',
+            marginTop: 10,
             }}
             />
         )
@@ -46,7 +43,7 @@ class ArtistScreen extends Component {
           value: text,
         });
 
-    
+
         const newData = this.arrayHolder.filter(item => {
             const itemData = `${item.name.toUpperCase()}`
             const textData = text.toUpperCase()
@@ -69,25 +66,25 @@ class ArtistScreen extends Component {
          />
         );
     }
-    
-    render() { 
+
+    render() {
         if(this.state.loading){
             return (
                 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 <ActivityIndicator />
-              </View> 
+              </View>
             );
         }
-        return ( 
+        return (
             <View style={{ flex: 1 }}>
                 {this.renderHeader()}
                 {this.renderSeparator()}
                 <ScrollView>
-                    {this.state.artists.map(artist => <SimpleRow {...artist} /> )}
+                    {this.state.artists.map(artist => <SimpleCard {...artist} /> )}
                 </ScrollView>
             </View>
          );
     }
 }
- 
+
 export default ArtistScreen;
