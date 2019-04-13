@@ -1,5 +1,5 @@
 export const fetchEvents = async () => {
-    const response = await fetch('https://randomuser.me/api/?results=20&nat=us')
-    const {results} = await response.json()
+    const response = await fetch('https://musicttlmd-staging.herokuapp.com/api/v1/events')
+    const results = await response.json()
     return results
 }

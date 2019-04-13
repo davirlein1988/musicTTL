@@ -3,7 +3,7 @@ import { TouchableOpacity, StyleSheet, Text, Image, View } from 'react-native';
 import PropTypes from 'prop-types';
 
 const styles = StyleSheet.create({
-  row: { 
+  row: {
     padding: 10,
     width: '100%',
     alignContent: 'space-between'
@@ -22,12 +22,12 @@ const SimpleRow = props => (
     style={styles.row}
     onPress={()=> alert("Future Development")}>
     <Image
-     source={{uri: 'https://via.placeholder.com/300'}}
+     source={{uri: 'https://via.placeholder.com/200'}}
      style={styles.ImageIconStyle}
     />
     <View>
-      <Text>{props.location.city + ' ' }{props.location.street}</Text>
-      <Text>{props.location.street}</Text>
+      <Text>{props.title}</Text>
+      <Text>{props.name}</Text>
     </View>
   </TouchableOpacity>
 );

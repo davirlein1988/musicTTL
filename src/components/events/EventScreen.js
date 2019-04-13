@@ -8,7 +8,7 @@ import { fetchEvents } from '../../services/eventService';
 class EventScreen extends Component {
     constructor(props){
         super(props)
-        this.state = { 
+        this.state = {
             loading: true,
             events: []
          }
@@ -25,7 +25,7 @@ class EventScreen extends Component {
             loading: false
         })
     }
-    
+
 
     renderSeparator = () => {
         return (
@@ -45,7 +45,7 @@ class EventScreen extends Component {
           value: text,
         });
 
-    
+
         const newData = this.arrayHolder.filter(item => {
             const itemData = `${item.name.toUpperCase()}`
             const textData = text.toUpperCase()
@@ -68,16 +68,16 @@ class EventScreen extends Component {
          />
         );
     }
-    
-    render() { 
+
+    render() {
         if(this.state.loading){
             return (
                 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 <ActivityIndicator />
-              </View> 
+              </View>
             );
         }
-        return ( 
+        return (
             <View style={{ flex: 1 }}>
                 {this.renderHeader()}
                 {this.renderSeparator()}
@@ -88,5 +88,5 @@ class EventScreen extends Component {
          );
     }
 }
- 
+
 export default EventScreen;
