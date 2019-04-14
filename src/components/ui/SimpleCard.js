@@ -85,7 +85,10 @@ const styles = StyleSheet.create({
 });
 
 const SimpleCard = props => (
-  <View style={styles.card}>
+
+  <View
+  key={props.id}
+  style={styles.card}>
 
    <View style={styles.cardHeader}>
       <View>
@@ -118,7 +121,6 @@ const SimpleCard = props => (
         </View>
       </View>
     </View>
-
   </View>
 
 );

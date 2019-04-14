@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, FlatList, ActivityIndicator, ScrollView } from 'react-native';
+import { View, Text, FlatList, ActivityIndicator, ScrollView,Button, TouchableOpacity } from 'react-native';
 import { ListItem, SearchBar } from 'react-native-elements';
 import SimpleCard from '../ui/SimpleCard';
 import { fetchArtists } from '../../services/artistService';
@@ -7,6 +7,7 @@ import { fetchArtists } from '../../services/artistService';
 
 
 class ArtistScreen extends Component {
+    
     constructor(props){
         super(props)
         this.state = {
@@ -27,6 +28,7 @@ class ArtistScreen extends Component {
         })
     }
 
+   
 
     renderSeparator = () => {
         return (
@@ -54,6 +56,7 @@ class ArtistScreen extends Component {
             data: newData,
         });
     }
+    
 
     renderHeader = () => {
         return (<SearchBar
@@ -66,8 +69,15 @@ class ArtistScreen extends Component {
          />
         );
     }
+    handleSelectItem(item){
+        this.props.navigation.navigate(
+            'DetailsScreen',
 
+            {item})
+    }
     render() {
+        const { navigate } = this.props.navigation;
+        
         if(this.state.loading){
             return (
                 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -79,8 +89,12 @@ class ArtistScreen extends Component {
             <View style={{ flex: 1 }}>
                 {this.renderHeader()}
                 {this.renderSeparator()}
+                
                 <ScrollView>
-                    {this.state.artists.map(artist => <SimpleCard {...artist} /> )}
+                    {this.state.artists.map(artist => 
+                    <TouchableOpacity onPress={()=> this.handleSelectItem(artist)}>
+                        <SimpleCard {...artist}/>
+                    </TouchableOpacity>  )}
                 </ScrollView>
             </View>
          );

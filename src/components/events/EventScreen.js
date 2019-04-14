@@ -27,18 +27,7 @@ class EventScreen extends Component {
     }
 
 
-    renderSeparator = () => {
-        return (
-            <View
-            style={{
-            height: 1,
-            width: '86%',
-            backgroundColor: '#CED0CE',
-            marginLeft: '14%',
-            }}
-            />
-        )
-    }
+    
 
     searchFilterFunction = text => {
         this.setState({
@@ -80,7 +69,6 @@ class EventScreen extends Component {
         return (
             <View style={{ flex: 1 }}>
                 {this.renderHeader()}
-                {this.renderSeparator()}
                 <ScrollView>
                     {this.state.events.map(event => <SimpleRow {...event} /> )}
                 </ScrollView>

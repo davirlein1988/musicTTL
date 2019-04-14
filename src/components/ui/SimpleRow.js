@@ -19,8 +19,7 @@ const styles = StyleSheet.create({
 
 const SimpleRow = props => (
   <TouchableOpacity
-    style={styles.row}
-    onPress={()=> alert("Future Development")}>
+    style={styles.row}>
     <Image
      source={{uri: 'https://via.placeholder.com/200'}}
      style={styles.ImageIconStyle}
