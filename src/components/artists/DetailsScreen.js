@@ -10,7 +10,7 @@ import Carousel from './Slider';
 class DetailsScreen extends React.Component {
   
   static navigationOptions = ({navigation}) => ({
-    headerTitle: navigation.getParam('id'),
+    headerTitle: navigation.getParam('stage_name'),
   })
     
     constructor(props){
@@ -20,18 +20,20 @@ class DetailsScreen extends React.Component {
             artist: null
          }
     }
-    componentDidMount(){
-        this.loadArtist()
-    }
     
 
-    loadArtist = async () =>{      
-        const results = await fetchOne('235727052')
+    loadArtist = async () =>{     
+        const {params } =  this.props.navigation.state;
+        const results = await fetchOne(params.id)
         this.setState({
             artist: results,
             loading: false
         })
     }
+    componentDidMount(){
+      this.loadArtist()
+    }
+  
 
     render() {
       const images = [
@@ -68,6 +70,7 @@ class DetailsScreen extends React.Component {
         
       ];
       const { navigation } = this.props
+      const { params } = this.props.navigation.state;
       const id = navigation.getParam('id')
       
       if(this.state.loading){
@@ -79,11 +82,10 @@ class DetailsScreen extends React.Component {
       }
       return (
           <ScrollView key={this.state.artist.id} style={{ flex: 1 }}>
-            <Text>{this.state.artist.stage_name}</Text>
-            <Text>{`${this.state.artist.first_name} ${this.state.artist.last_name}`}</Text>
+            <Text>Name: {`${this.state.artist.first_name} ${this.state.artist.last_name}`}</Text>
+            <Text>Gallery....Swipe left</Text>
             <Carousel images={images} />
             <TouchableOpacity>
-              <Text>{id || 'Hello'}</Text>
             </TouchableOpacity>
             <TouchableOpacity style={{color: 'black', backgroundColor: 'trasparent'}} title="Genres">
             <Text>Genres</Text>

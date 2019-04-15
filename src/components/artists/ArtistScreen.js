@@ -6,7 +6,7 @@ import { fetchArtists } from '../../services/artistService';
 
 
 
-class ArtistScreen extends Component {
+class ArtistScreen extends React.Component {
     
     constructor(props){
         super(props)
@@ -73,7 +73,9 @@ class ArtistScreen extends Component {
         this.props.navigation.navigate(
             'DetailsScreen',
 
-            {item})
+            {id: `${item.id}`,
+            stage_name: `${item.stage_name}`
+        })
     }
     render() {
         const { navigate } = this.props.navigation;
