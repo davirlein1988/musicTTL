@@ -10,8 +10,12 @@ const styles = StyleSheet.create({
 
     },
     title: {
-
+        color: "#eee",
+        alignSelf: 'center',
+        fontSize: 20,
+        padding: 10,
     },
+    
     button: {
 
     }
@@ -20,8 +24,8 @@ const styles = StyleSheet.create({
 
 const VenueCard = props => (
     <Card>
-        <CardImage source={{uri: 'http://placehold.it/480x270'}} title={props.name}/>
-        <CardTitle subtitle={props.location}/>
+        <CardImage source={{uri: 'https://picsum.photos/200/300/?random'}} title={props.name}/>
+        <CardTitle style={{marginTop: 10}} subtitle={props.location}/>
         <CardContent text={props.description}/>
         <CardAction seperator={true} inColumn={false}>
             <CardButton
