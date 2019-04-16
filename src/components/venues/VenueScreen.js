@@ -1,39 +1,51 @@
 import React, { Component } from 'react';
-import { View, Text, FlatList, ActivityIndicator, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, FlatList, ActivityIndicator, ScrollView,Button, TouchableOpacity } from 'react-native';
 import { ListItem, SearchBar } from 'react-native-elements';
+import VenueCard from '../ui/VenueCard';
 import { fetchVenues } from '../../services/venueService';
-import SimpleRow from '../ui/SimpleRow';
 
 
-class VenueScreen extends Component {
+
+class VenueScreen extends React.Component {
+    
     constructor(props){
         super(props)
-        this.state = { 
+        this.state = {
             loading: true,
             venues: []
          }
          this.arrayHolder = []
     }
     componentDidMount(){
-        this.loadVenues()
+        this.loadArtists()
     }
 
-    loadVenues = async () =>{
+    loadArtists = async () =>{
         const results = await fetchVenues()
         this.setState({
             venues: results,
             loading: false
         })
     }
-    
 
+   
+
+    renderSeparator = () => {
+        return (
+            <View
+            style={{
+            marginTop: 10,
+            }}
+            />
+        )
+    }
 
     searchFilterFunction = text => {
         this.setState({
           value: text,
         });
 
-    
+
         const newData = this.arrayHolder.filter(item => {
             const itemData = `${item.name.toUpperCase()}`
             const textData = text.toUpperCase()
@@ -44,10 +56,11 @@ class VenueScreen extends Component {
             data: newData,
         });
     }
+    
 
     renderHeader = () => {
         return (<SearchBar
-        placeholder="Search Venue..."
+        placeholder="Search Artist..."
         lightTheme
         round
         onChangeText={text => this.searchFilterFunction(text)}
@@ -56,36 +69,37 @@ class VenueScreen extends Component {
          />
         );
     }
-
     handleSelectItem(item){
         this.props.navigation.navigate(
             'VenueDetails',
-            {item})
+
+            {id: `${item.id}`,
+            name: `${item.name}`
+        })
     }
-    
-    render() { 
+    render() {
         const { navigate } = this.props.navigation;
         
         if(this.state.loading){
             return (
                 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 <ActivityIndicator />
-              </View> 
+              </View>
             );
         }
-        return ( 
+        return (
             <View style={{ flex: 1 }}>
                 {this.renderHeader()}
+                {this.renderSeparator()}                
                 <ScrollView >
                     {this.state.venues.map(venue => 
-                    <TouchableOpacity onPress={this.handleSelectItem(venue)}>
-                        <SimpleRow {...venue} />
-                    </TouchableOpacity>
-                     )}
+                    <TouchableOpacity onPress={()=> this.handleSelectItem(venue)}>
+                        <VenueCard {...venue}/>
+                    </TouchableOpacity>  )}
                 </ScrollView>
             </View>
          );
     }
 }
- 
+
 export default VenueScreen;

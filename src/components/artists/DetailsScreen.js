@@ -24,7 +24,7 @@ class DetailsScreen extends React.Component {
 
     loadArtist = async () =>{     
         const {params } =  this.props.navigation.state;
-        const results = await fetchOne(params.id)
+        const results = await fetchOne(`${'https://musicttlmd-staging.herokuapp.com/api/v1/artists/'}${params.id}`)
         this.setState({
             artist: results,
             loading: false
