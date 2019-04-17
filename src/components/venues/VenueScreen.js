@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { View, Text, FlatList, ActivityIndicator, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, FlatList, ActivityIndicator, ScrollView,Button, TouchableOpacity } from 'react-native';
 import { ListItem, SearchBar } from 'react-native-elements';
+import VenueCard from '../ui/VenueCard';
 import { fetchVenues } from '../../services/venueService';
-import SimpleRow from '../ui/SimpleRow';
 
 
-class VenueScreen extends Component {
+
+class VenueScreen extends React.Component {
+
     constructor(props){
         super(props)
         this.state = {
@@ -15,10 +17,10 @@ class VenueScreen extends Component {
          this.arrayHolder = []
     }
     componentDidMount(){
-        this.loadVenues()
+        this.loadArtists()
     }
 
-    loadVenues = async () =>{
+    loadArtists = async () =>{
         const results = await fetchVenues()
         this.setState({
             venues: results,
@@ -27,6 +29,16 @@ class VenueScreen extends Component {
     }
 
 
+
+    renderSeparator = () => {
+        return (
+            <View
+            style={{
+            marginTop: 10,
+            }}
+            />
+        )
+    }
 
     searchFilterFunction = text => {
         this.setState({
@@ -45,6 +57,7 @@ class VenueScreen extends Component {
         });
     }
 
+
     renderHeader = () => {
         return (<SearchBar
         placeholder="Search Venues..."
@@ -56,13 +69,14 @@ class VenueScreen extends Component {
          />
         );
     }
-
     handleSelectItem(item){
         this.props.navigation.navigate(
             'VenueDetails',
-            {item})
-    }
 
+            {id: `${item.id}`,
+            name: `${item.name}`
+        })
+    }
     render() {
         const { navigate } = this.props.navigation;
 
@@ -76,12 +90,12 @@ class VenueScreen extends Component {
         return (
             <View style={{ flex: 1 }}>
                 {this.renderHeader()}
+                {this.renderSeparator()}
                 <ScrollView >
                     {this.state.venues.map(venue =>
-                    <TouchableOpacity onPress={this.handleSelectItem(venue)}>
-                        <SimpleRow {...venue} />
-                    </TouchableOpacity>
-                     )}
+                    <TouchableOpacity onPress={()=> this.handleSelectItem(venue)}>
+                        <VenueCard {...venue}/>
+                    </TouchableOpacity>  )}
                 </ScrollView>
             </View>
          );
