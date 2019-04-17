@@ -8,7 +8,7 @@ import SimpleRow from '../ui/SimpleRow';
 class VenueScreen extends Component {
     constructor(props){
         super(props)
-        this.state = { 
+        this.state = {
             loading: true,
             venues: []
          }
@@ -25,7 +25,7 @@ class VenueScreen extends Component {
             loading: false
         })
     }
-    
+
 
 
     searchFilterFunction = text => {
@@ -33,7 +33,7 @@ class VenueScreen extends Component {
           value: text,
         });
 
-    
+
         const newData = this.arrayHolder.filter(item => {
             const itemData = `${item.name.toUpperCase()}`
             const textData = text.toUpperCase()
@@ -47,7 +47,7 @@ class VenueScreen extends Component {
 
     renderHeader = () => {
         return (<SearchBar
-        placeholder="Search Venue..."
+        placeholder="Search Venues..."
         lightTheme
         round
         onChangeText={text => this.searchFilterFunction(text)}
@@ -62,22 +62,22 @@ class VenueScreen extends Component {
             'VenueDetails',
             {item})
     }
-    
-    render() { 
+
+    render() {
         const { navigate } = this.props.navigation;
-        
+
         if(this.state.loading){
             return (
                 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 <ActivityIndicator />
-              </View> 
+              </View>
             );
         }
-        return ( 
+        return (
             <View style={{ flex: 1 }}>
                 {this.renderHeader()}
                 <ScrollView >
-                    {this.state.venues.map(venue => 
+                    {this.state.venues.map(venue =>
                     <TouchableOpacity onPress={this.handleSelectItem(venue)}>
                         <SimpleRow {...venue} />
                     </TouchableOpacity>
@@ -87,5 +87,5 @@ class VenueScreen extends Component {
          );
     }
 }
- 
+
 export default VenueScreen;

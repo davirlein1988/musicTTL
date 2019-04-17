@@ -27,7 +27,7 @@ class EventScreen extends Component {
     }
 
 
-    
+
 
     searchFilterFunction = text => {
         this.setState({
@@ -48,7 +48,7 @@ class EventScreen extends Component {
 
     renderHeader = () => {
         return (<SearchBar
-        placeholder="Search Artist..."
+        placeholder="Search Events..."
         lightTheme
         round
         onChangeText={text => this.searchFilterFunction(text)}

@@ -3,11 +3,11 @@ import { View, Text } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import Icon from 'react-native-ionicons'
 
-import { 
+import {
   createSwitchNavigator,
-  createAppContainer, 
-  createDrawerNavigator, 
-  createBottomTabNavigator, 
+  createAppContainer,
+  createDrawerNavigator,
+  createBottomTabNavigator,
   createStackNavigator } from 'react-navigation'
 
 
@@ -38,9 +38,9 @@ const Artists = createStackNavigator({
     screen: ArtistScreen,
     navigationOptions: ({navigation}) => {
       return {
-        headerTitle: 'List Of Artists',
+        headerTitle: 'Artists',
         headerLeft: (
-          <Icon 
+          <Icon
         style={{paddingLeft: 10}}
         onPress={()=> navigation.openDrawer()}
         name="md-menu" size={30} />
@@ -64,9 +64,9 @@ const Venues = createStackNavigator({
     screen: VenueScreen,
     navigationOptions: ({navigation}) => {
       return {
-        headerTitle: 'List of venues',
+        headerTitle: 'Venues',
         headerLeft: (
-          <Icon 
+          <Icon
         style={{paddingLeft: 10}}
         onPress={()=> navigation.openDrawer()}
         name="md-menu" size={30} />
@@ -89,9 +89,9 @@ const Events = createStackNavigator({
     screen: EventScreen,
     navigationOptions: ({navigation}) => {
       return {
-        headerTitle: 'Future shows',
+        headerTitle: 'Events',
         headerLeft: (
-          <Icon 
+          <Icon
         style={{paddingLeft: 10}}
         onPress={()=> navigation.openDrawer()}
         name="md-menu" size={30} />
@@ -158,17 +158,17 @@ const DashboardStackNavigator = createStackNavigator(
   {
     defaultNavigationOptions: ({navigation}) => {
       return {
-        headerLeft: <Icon 
+        headerLeft: <Icon
         style={{paddingLeft: 10}}
         onPress={()=> navigation.openDrawer()}
         name="md-menu" size={30} />
       }
     }
   },
-  
+
   )
 
-  
+
 
 
 const AppDrawerNavigator = createDrawerNavigator({
@@ -186,9 +186,3 @@ const AppSwithNavigator = createSwitchNavigator({
   Login: {screen: Login }
 })
 const AppContainer = createAppContainer(AppSwithNavigator);
-
-
- 
-
-
- 

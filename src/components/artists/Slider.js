@@ -26,7 +26,7 @@ class Slider extends Component {
       );
     }
     console.log('Please provide images');
-    return null;    
+    return null;
   }
 }
 
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingTop: 10,
+    paddingTop: 15,
   },
   scrollContainer: {
     height,

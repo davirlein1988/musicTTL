@@ -14,21 +14,28 @@ const styles = StyleSheet.create({
     height: 250,
     width: 300,
     resizeMode: 'stretch',
+  },
+  container:{
+    flex:1,
+    marginTop:20,
+    paddingHorizontal: 16,
   }
 });
 
 const SimpleRow = props => (
-  <TouchableOpacity
-    style={styles.row}>
-    <Image
-     source={{uri: 'https://via.placeholder.com/200'}}
-     style={styles.ImageIconStyle}
-    />
-    <View>
-      <Text>{props.title}</Text>
-      <Text>{props.name}</Text>
-    </View>
-  </TouchableOpacity>
+  <View style={styles.container}>
+    <TouchableOpacity
+      style={styles.row}>
+      <Image
+       source={{uri: 'https://via.placeholder.com/200'}}
+       style={styles.ImageIconStyle}
+      />
+      <View>
+        <Text>{props.title}</Text>
+        <Text>{props.name}</Text>
+      </View>
+    </TouchableOpacity>
+  </View>
 );
 
 SimpleRow.propTypes = {
