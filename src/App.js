@@ -141,7 +141,7 @@ const HomeTabNavigator = createBottomTabNavigator(
       }
     },
     tabBarOptions: {
-      activeTintColor: '#e91e63',
+      activeTintColor: '#812F81',
       labelStyle: {
         fontSize: 12,
       },
