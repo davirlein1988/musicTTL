@@ -1,32 +1,26 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
-import { createStore, applyMiddleware } from 'redux';
-import ReduxThunk from 'redux-thunk';
-import { logger } from 'redux-logger';
-import { Provider } from 'react-redux';
-import Reducers from './reducers/';
-import LoginForm from './components/LoginForm';
+import Ionicons from 'react-native-vector-icons/Ionicons'
 import Icon from 'react-native-ionicons'
 
-import { 
+import {
   createSwitchNavigator,
-  createAppContainer, 
-  createDrawerNavigator, 
-  createBottomTabNavigator, 
+  createAppContainer,
+  createDrawerNavigator,
+  createBottomTabNavigator,
   createStackNavigator } from 'react-navigation'
 
 
-import DashboardScreen from './components/home/DashboardScreen';
 import WelcomeScreen from './components/home/WelcomeScreen';
-import Feed from './components/home/Feed';
-import Profile from './components/home/Profile';
-import Settings from './components/home/Settings';
 import Login from './components/auth/Login';
-import Details from './components/artists/Details';
+
 import VenueScreen from './components/venues/VenueScreen';
 import EventScreen from './components/events/EventScreen';
 import ArtistScreen from './components/artists/ArtistScreen';
-import VenueList from './components/venues/VenuesList';
+import DetailsScreen from './components/artists/DetailsScreen';
+
+import VenueDetails from './components/venues/VenueDetails';
+import EventDetails from './components/events/EventDetails';
 
 
 class App extends Component {
@@ -36,73 +30,17 @@ class App extends Component {
 }
 
 export default App;
-const VenueStack = createStackNavigator({
-  Venues: {
-    screen: VenueList,
-    navigationOptions: ({navigation}) => {
-      return {
-        headerTitle: 'List Of Venues',
-        headerLeft: (
-          <Icon 
-        style={{paddingLeft: 10}}
-        onPress={()=> navigation.openDrawer()}
-        name="md-menu" size={30} />
-        )
-      }
-    }
-  },
-  Details: {
-    screen: Details
-  }
-})
 
-const EventStack = createStackNavigator({
-  Events: {
-    screen: EventScreen,
-    navigationOptions: ({navigation}) => {
-      return {
-        headerTitle: 'List Of Events',
-        headerLeft: (
-          <Icon 
-        style={{paddingLeft: 10}}
-        onPress={()=> navigation.openDrawer()}
-        name="md-menu" size={30} />
-        )
-      }
-    }
-  },
-  Details: {
-    screen: Details
-  }
-})
 
-const ArtistStack = createStackNavigator({
-  Artists: {
-    screen: ArtistScreen,
-    navigationOptions: ({navigation}) => {
-      return {
-        headerTitle: 'List Of Artists',
-        headerLeft: (
-          <Icon 
-        style={{paddingLeft: 10}}
-        onPress={()=> navigation.openDrawer()}
-        name="md-menu" size={30} />
-        )
-      }
-    }
-  },
-  Details: {
-    screen: Details
-  }
-})
+
 const Artists = createStackNavigator({
   Artists: {
     screen: ArtistScreen,
     navigationOptions: ({navigation}) => {
       return {
-        headerTitle: 'List Of Artists',
+        headerTitle: 'Artists',
         headerLeft: (
-          <Icon 
+          <Icon
         style={{paddingLeft: 10}}
         onPress={()=> navigation.openDrawer()}
         name="md-menu" size={30} />
@@ -110,8 +48,8 @@ const Artists = createStackNavigator({
       }
     }
   },
-  Details: {
-    screen: Details
+  DetailsScreen: {
+    screen: DetailsScreen
   }
 },
 {
@@ -120,46 +58,79 @@ const Artists = createStackNavigator({
   }
 })
 
-const ProfileStack = createStackNavigator({
-  Feed: {
-    screen: Profile,
+
+const Venues = createStackNavigator({
+  Venues: {
+    screen: VenueScreen,
     navigationOptions: ({navigation}) => {
       return {
-        headerTitle: 'Profile',
+        headerTitle: 'Venues',
         headerLeft: (
-          <Icon 
+          <Icon
         style={{paddingLeft: 10}}
         onPress={()=> navigation.openDrawer()}
         name="md-menu" size={30} />
         )
       }
     }
+  },
+  VenueDetails: {
+    screen: VenueDetails
+  }
+},
+{
+  defaultNavigationOptions: {
+    gesturesEnabled: false
   }
 })
 
-const SettingStack = createStackNavigator({
-  Artists: {
-    screen: Settings,
+const Events = createStackNavigator({
+  Events: {
+    screen: EventScreen,
     navigationOptions: ({navigation}) => {
       return {
-        headerTitle: 'Settings',
+        headerTitle: 'Events',
         headerLeft: (
-          <Icon 
+          <Icon
         style={{paddingLeft: 10}}
         onPress={()=> navigation.openDrawer()}
         name="md-menu" size={30} />
         )
       }
     }
+  },
+  EventDetails: {
+    screen: EventDetails
+  }
+},
+{
+  defaultNavigationOptions: {
+    gesturesEnabled: false
   }
 })
 
+Artists.navigationOptions = {
+  tabBarIcon: ({focused, tintColor}) => (
+    <Ionicons name={`ios-microphone`} size={25} color={tintColor} />
+  ),
+}
+
+Venues.navigationOptions = {
+  tabBarIcon: ({focused, tintColor}) => (
+    <Ionicons name={`ios-radio`} size={25} color={tintColor} />
+  ),
+}
+Events.navigationOptions = {
+  tabBarIcon: ({focused, tintColor}) => (
+    <Ionicons name={`ios-musical-notes`} size={25} color={tintColor} />
+  ),
+}
 
 const HomeTabNavigator = createBottomTabNavigator(
   {
   Artists,
-  ProfileStack,
-  SettingStack
+  Venues,
+  Events
   },
   {
     navigationOptions: ({navigation}) => {
@@ -170,7 +141,7 @@ const HomeTabNavigator = createBottomTabNavigator(
       }
     },
     tabBarOptions: {
-      activeTintColor: '#e91e63',
+      activeTintColor: '#812F81',
       labelStyle: {
         fontSize: 12,
       },
@@ -187,31 +158,22 @@ const DashboardStackNavigator = createStackNavigator(
   {
     defaultNavigationOptions: ({navigation}) => {
       return {
-        headerLeft: <Icon 
+        headerLeft: <Icon
         style={{paddingLeft: 10}}
         onPress={()=> navigation.openDrawer()}
         name="md-menu" size={30} />
       }
     }
   },
-  
+
   )
 
-  
+
 
 
 const AppDrawerNavigator = createDrawerNavigator({
   Options: {
     screen: DashboardStackNavigator
-  },
-  Venues: {
-    screen: VenueStack
-  },
-  Artists: {
-    screen: ArtistStack
-  },
-  Events : {
-    screen: EventStack
   },
   Account : {
     screen: Login
@@ -224,9 +186,3 @@ const AppSwithNavigator = createSwitchNavigator({
   Login: {screen: Login }
 })
 const AppContainer = createAppContainer(AppSwithNavigator);
-
-
- 
-
-
- 

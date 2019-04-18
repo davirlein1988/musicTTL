@@ -3,9 +3,11 @@ import { StyleSheet, Text, View, TouchableOpacity, Image, Alert, ScrollView, But
 
 
 const styles = StyleSheet.create({
+
   container:{
     flex:1,
     marginTop:20,
+    paddingHorizontal: 16,
   },
 
   /******** card **************/
@@ -20,22 +22,18 @@ const styles = StyleSheet.create({
     backgroundColor:"white"
   },
   cardHeader: {
-    paddingVertical: 17,
+    paddingVertical: 12,
     paddingHorizontal: 16,
     borderTopLeftRadius: 1,
     borderTopRightRadius: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  cardContent: {
-    paddingVertical: 12.5,
-    paddingHorizontal: 16,
-  },
+
   cardFooter:{
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingTop: 12.5,
-    paddingBottom: 25,
+    paddingBottom: 20,
     paddingHorizontal: 16,
     borderBottomLeftRadius: 1,
     borderBottomRightRadius: 1,
@@ -79,46 +77,52 @@ const styles = StyleSheet.create({
   },
   socialBarButton:{
     flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
   }
 });
 
 const SimpleCard = props => (
-  <View style={styles.card}>
+  <View style={styles.container}>
+    <View
+    key={props.id}
+    style={styles.card}>
 
-   <View style={styles.cardHeader}>
-      <View>
-        <Text style={styles.title}>{props.stage_name}</Text>
-        <Text style={styles.time}>{props.genres.join(", ")}</Text>
+      <Image style={styles.cardImage} source={{uri:'https://via.placeholder.com/200'}}/>
+
+      <View style={styles.cardHeader}>
+         <View>
+           <Text style={styles.title}>{props.stage_name}</Text>
+           <Text style={styles.time}>{props.genres.join(", ")}</Text>
+         </View>
+       </View>
+
+      <View style={styles.cardFooter}>
+        <View style={styles.socialBarContainer}>
+
+          <View style={styles.socialBarSection}>
+            <TouchableOpacity style={styles.socialBarButton}>
+              <Image style={styles.icon} source={{uri: 'https://png.icons8.com/android/75/e74c3c/hearts.png'}}/>
+              <Text style={styles.socialBarLabel}>78</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.socialBarSection}>
+            <TouchableOpacity style={styles.socialBarButton}>
+              <Image style={styles.icon} source={{uri: 'https://png.icons8.com/ios-glyphs/75/2ecc71/calendar.png'}}/>
+              <Text style={styles.socialBarLabel}>25</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.socialBarSection}>
+            <TouchableOpacity style={styles.socialBarButton}>
+              <Image style={styles.icon} source={{uri: 'https://png.icons8.com/metro/75/3498db/youtube.png'}}/>
+              <Text rkType='primary4 hintColor' style={styles.socialBarLabel}>13</Text>
+            </TouchableOpacity>
+          </View>
+
+        </View>
       </View>
+
     </View>
-
-    <Image style={styles.cardImage} source={{uri:'https://via.placeholder.com/200'}}/>
-
-    <View style={styles.cardFooter}>
-      <View style={styles.socialBarContainer}>
-        <View style={styles.socialBarSection}>
-          <TouchableOpacity style={styles.socialBarButton}>
-            <Image style={styles.icon} source={{uri: 'https://png.icons8.com/android/75/e74c3c/hearts.png'}}/>
-            <Text style={styles.socialBarLabel}>78</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.socialBarSection}>
-          <TouchableOpacity style={styles.socialBarButton}>
-            <Image style={styles.icon} source={{uri: 'https://png.icons8.com/ios-glyphs/75/2ecc71/calendar.png'}}/>
-            <Text style={styles.socialBarLabel}>25</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.socialBarSection}>
-          <TouchableOpacity style={styles.socialBarButton}>
-            <Image style={styles.icon} source={{uri: 'https://png.icons8.com/metro/75/3498db/youtube.png'}}/>
-            <Text rkType='primary4 hintColor' style={styles.socialBarLabel}>13</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-    </View>
-
   </View>
 
 );

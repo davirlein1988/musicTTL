@@ -5055,6 +5055,22 @@ react-native-debugger-open@^0.3.19:
     minimist "^1.2.0"
     semver "^5.4.1"
 
+react-native-easy-guesture-responder@^1.0.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-easy-guesture-responder/-/react-native-easy-guesture-responder-1.1.0.tgz#8baf407854bea18ec1d6d070992cc86a5c0b805b"
+  integrity sha512-06HTli3cbQ+pRVn+aGYFMbh0d8TLKSn0S1+iAcMaOGff6Vgrmy/6tcZCc+Om9HlObKlVO5Om5L6WvNhviwCOaA==
+  dependencies:
+    prop-types "^15.6.2"
+
+react-native-easy-view-transformer@^1.0.1:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-easy-view-transformer/-/react-native-easy-view-transformer-1.1.0.tgz#6205bd6b84a30319def2c6c11e78c46a4284500f"
+  integrity sha512-tSMryeWI9kXRK/oDN/bBok0rkf9mkTRtiOqCoxJDSFtbl5VWZ9cDdYuSEX5RoPd6WxTPE0VIheMmWzSyDuqSeQ==
+  dependencies:
+    prop-types "^15.6.2"
+    react-native-easy-guesture-responder "^1.0.0"
+    react-native-scrolling "^1.0.0"
+
 react-native-elements@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/react-native-elements/-/react-native-elements-1.1.0.tgz#f99bcda4459a886f3ab4591c684c099d37aedf2b"
@@ -5068,6 +5084,16 @@ react-native-elements@^1.1.0:
     react-native-ratings "^6.3.0"
     react-native-status-bar-height "^2.2.0"
 
+react-native-gallery-swiper@^1.20.3:
+  version "1.20.3"
+  resolved "https://registry.yarnpkg.com/react-native-gallery-swiper/-/react-native-gallery-swiper-1.20.3.tgz#67de62602f6235c2be64303622a1208148577ef7"
+  integrity sha512-Cv//bJ7dIyU9v7Jh1PcA1FybP7Madj1TpTbmoTRMEVBII29hx12kGKJvV2fj+rR8rLKMAih6rHXjwSQLS415LQ==
+  dependencies:
+    prop-types "^15.6.2"
+    react-native-easy-guesture-responder "^1.0.0"
+    react-native-image-transformer "^1.0.2"
+    react-native-page-list "^1.0.0"
+
 react-native-gesture-handler@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.1.0.tgz#2a7d545ad2e0ca23adce22b2af441ad360ecccee"
@@ -5077,10 +5103,34 @@ react-native-gesture-handler@^1.1.0:
     invariant "^2.2.2"
     prop-types "^15.5.10"
 
+react-native-image-transformer@^1.0.2:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/react-native-image-transformer/-/react-native-image-transformer-1.0.3.tgz#ee6339e10a7c4314557d782a3407585b04f881f3"
+  integrity sha512-ceXJYwnUZOC51WFhUS6n4G3bf4b1U6JiqNsEHzbN3BglpXWVJi02H1z3dYC5WyVHOMhgIZx0WeJShaz5AmC0yA==
+  dependencies:
+    prop-types "^15.6.2"
+    react-native-easy-view-transformer "^1.0.1"
+
 react-native-ionicons@^4.5.5:
   version "4.5.5"
   resolved "https://registry.yarnpkg.com/react-native-ionicons/-/react-native-ionicons-4.5.5.tgz#4657ce742e39f0443b0960f20b946269fa0b90b5"
   integrity sha512-Pj1jFcwcOPG62EzWpLfu7UQwByd3SjTfjbs2WMPjmnfBuA6xiR8hh1+fflhpQ7Yv4j5cQuCSiR53uLbasxH/6Q==
+
+react-native-material-cards@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/react-native-material-cards/-/react-native-material-cards-1.0.9.tgz#fe200c3b9551abae346e231c10abea662cec48f7"
+  integrity sha512-TscOwr+oaFqhBfeekQ5YXKV6rZkFvyqKGlxHYaIC4juPAV3qn1k0lOMKS7H9l6ag9jSDeKV6kqpSPOgiL7NQEQ==
+  dependencies:
+    prop-types "^15.5.10"
+
+react-native-page-list@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-page-list/-/react-native-page-list-1.0.0.tgz#132a163139b5c00c6845bfbe64459d661750a104"
+  integrity sha512-FPXJsmsQnJfzD0hyWcLAKkerRl1hXLmXSF2Tf4cRolhbjwXMM8ntA77JBvL/TS189/zT8xGw1Y3V+pLdTl98MQ==
+  dependencies:
+    prop-types "^15.6.2"
+    react-native-easy-guesture-responder "^1.0.0"
+    react-native-scrolling "^1.0.0"
 
 react-native-ratings@^6.3.0:
   version "6.3.1"
@@ -5101,6 +5151,13 @@ react-native-safe-area-view@^0.13.0:
   version "1.0.0-alpha.22"
   resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-1.0.0-alpha.22.tgz#7a120377b52aa9bbb94d0b8541a014026be9289b"
   integrity sha512-kSyAt0AeVU6N7ZonfV6dP6iZF8B7Bce+tk3eujXhzBGsLg0VSLnU7uE9VqJF0xdQrHR91ZjGgVMieo/8df9KTA==
+
+react-native-scrolling@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-scrolling/-/react-native-scrolling-1.0.0.tgz#8dcc4d42c3a2ce423bb5779cb7d2f7ddc28e2b83"
+  integrity sha512-BOi0YhJY0G7bCGv6Phj6/ioNnfRtY3Qhi5O7vGQklAyRqZFNuJ4QE+dLmJaH0l/a+ACAq9MgZeV5wnET77SUqg==
+  dependencies:
+    prop-types "^15.6.2"
 
 react-native-status-bar-height@^2.2.0:
   version "2.3.1"
